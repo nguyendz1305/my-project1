@@ -1,0 +1,211 @@
+/* Tổng thể giao diện */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(45deg, #ff6f61, #f5a623);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: gradientBackground 6s ease infinite; /* Hiệu ứng gradient động */
+  transition: background 2s ease-in-out; /* Làm mượt chuyển động nền */
+}
+
+/* Hiệu ứng động nền gradient */
+@keyframes gradientBackground {
+  0% {
+    background: linear-gradient(45deg, #ff6f61, #f5a623);
+  }
+  50% {
+    background: linear-gradient(45deg, #00bcd4, #8bc34a);
+  }
+  100% {
+    background: linear-gradient(45deg, #ff6f61, #f5a623);
+  }
+}
+
+/* Container chứa nội dung */
+.weather-container {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    background-color 0.4s ease-in-out;
+  transform: translateY(0);
+}
+
+.weather-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); /* Hiệu ứng nâng lên khi hover */
+  background-color: rgba(0, 0, 0, 0.9); /* Thay đổi màu nền khi hover */
+}
+
+/* Tiêu đề chính */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffeb3b;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6); /* Tạo hiệu ứng bóng cho chữ */
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Hiệu ứng fadeIn cho phần tử */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown chọn thành phố */
+.city-dropdown {
+  padding: 12px;
+  font-size: 1.3rem;
+  margin: 15px 0;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.city-dropdown:focus {
+  outline: none;
+  background-color: #e6f7ff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.7);
+  transform: scale(1.05); /* Phóng to khi focus */
+}
+
+/* Nút Get Weather */
+.weather-button {
+  padding: 15px 25px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: #ff9800;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+.weather-button:hover {
+  background-color: #ff5722;
+  transform: scale(1.05); /* Hiệu ứng phóng to nút khi hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ nhẹ khi hover */
+}
+
+/* Thông báo lỗi */
+.error {
+  color: #ff4040;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 15px;
+  letter-spacing: 1px;
+  animation: shakeError 0.6s ease-out;
+}
+
+/* Hiệu ứng rung cho lỗi */
+@keyframes shakeError {
+  0% {
+    transform: translateX(5px);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Thông tin thời tiết */
+.weather-info {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.weather-condition {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Các icon thời tiết */
+.weather-icon {
+  font-size: 4.5rem;
+  margin-bottom: 15px;
+  color: #ffeb3b;
+  animation: pulse 1.5s infinite;
+}
+
+/* Hiệu ứng pulse cho icon */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hiệu ứng Hover cho các phần tử chứa dữ liệu */
+.weather-info:hover,
+.weather-condition:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Chỉnh sửa cho dropdown khi không chọn */
+.city-dropdown option[value=""] {
+  color: #888;
+}
+
+/* Hiệu ứng động cho thông tin */
+.weather-info p,
+.weather-condition p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 8px 0;
+  transition: color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.weather-info p:hover,
+.weather-condition p:hover {
+  color: #ff9800;
+  transform: translateX(10px); /* Hiệu ứng dịch chuyển nhẹ khi hover */
+}
